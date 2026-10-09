@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Riquelme Gabriel — Sites, sistemas e automações</title>
+  <meta name="description" content="Sou o Riquelme. Crio sites, sistemas sob medida e automações com IA pra pequenos negócios e profissionais liberais.">
+  <meta name="theme-color" content="#000000">
+  <meta property="og:title" content="Riquelme Gabriel — Sites, sistemas e automações">
+  <meta property="og:description" content="Boas ideias ficam melhores quando viram site.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Silkscreen&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    // ===== CONFIG — troque aqui =====
+    window.SITE = {
+      whatsapp: '5514997631182', // só números, com 55 + DDD
+    };
+  </script>
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav">
+    <a class="nav__logo" href="#topo" aria-label="Riquelme Gabriel, voltar ao topo">
+      <img class="nav__marca" src="assets/img/logo-r.png" alt="" width="189" height="183">
+    </a>
+    <nav class="nav__links" aria-label="Seções">
+      <a href="#projetos">Projetos</a>
+      <a href="#ideias">Como eu trabalho</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="btn btn--pequeno" data-whats href="#">Vamos conversar <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="topo">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <canvas class="hero__fundo" aria-hidden="true"></canvas>
+      <div class="hero__conteudo">
+        <p class="selo"><span class="selo__ponto"></span>Disponível pra novos projetos</p>
+        <h1 class="hero__titulo" aria-label="Riquelme Gabriel">
+          <span class="palavra palavra--1">Riquelme</span>
+          <span class="palavra palavra--2">Gabriel</span>
+        </h1>
+        <p class="hero__sub">Crio sites, sistemas e automações com IA<br class="so-desk"> pra quem quer o negócio andando sozinho.</p>
+        <div class="hero__cta" data-perch="stand" data-perch-x="0.82" data-say="opa! rola pra baixo">
+          <a class="btn btn--grande" href="#trabalho">Saiba mais <span class="seta-pixel" aria-hidden="true"></span></a>
+        </div>
+      </div>
+      <a class="hero__rolar" href="#trabalho" aria-label="Rolar pra baixo"><span></span></a>
+    </section>
+
+    <!-- ===== VEJA MEU TRABALHO ===== -->
+    <section class="gigante" id="trabalho" aria-label="Veja meu trabalho">
+      <p class="gigante__linha" data-perch="sit" data-perch-x="0.88" data-perch-dy="0.27" data-say="olha só o que eu fiz">Veja meu</p>
+      <p class="gigante__linha gigante__linha--azul">trabalho</p>
+    </section>
+
+    <!-- ===== PROJETOS =====
+         Pra adicionar um projeto: copie um <article class="card"> inteiro,
+         troque imagem, textos e o data-say (fala do bonequinho). -->
+    <section class="projetos" id="projetos">
+      <div class="projetos__texto">
+        <p class="rotulo">Projetos</p>
+        <h2>Ideias que eu já tirei do papel.</h2>
+        <p>Sites, sistemas e automações feitos sob medida. Cada um resolve uma dor diferente — aqui vão alguns.</p>
+        <p class="projetos__contador" aria-hidden="true"><b>01</b> / <span>05</span></p>
+      </div>
+
+      <div class="projetos__lista">
+        <article class="card" style="--i:0" data-perch="sit" data-perch-x="0.84" data-say="esse tem até peça 3D">
+          <div class="card__topo">
+            <span class="card__num">01</span>
+            <ul class="tags"><li>Site</li><li>Indústria</li><li>18 páginas</li></ul>
+          </div>
+          <div class="card__img">
+            <img src="assets/img/projetos/vemax.jpg" alt="Página inicial do site da Vemax Usinagem" loading="lazy" width="1200" height="750">
+          </div>
+          <div class="card__base">
+            <div>
+              <h3>Vemax Usinagem</h3>
+              <p>Site institucional bilíngue (PT/EN) com vídeo no topo e peça 3D interativa.</p>
+            </div>
+            <span class="card__seta" aria-hidden="true">↗</span>
+          </div>
+        </article>
+
+        <article class="card" style="--i:1" data-perch="sit" data-perch-x="0.84" data-say="busca de imóvel com filtro">
+          <div class="card__topo">
+            <span class="card__num">02</span>
+            <ul class="tags"><li>Site</li><li>Imobiliário</li><li>Catálogo</li></ul>
+          </div>
+          <div class="card__img">
+            <img src="assets/img/projetos/leandro.jpg" alt="Página inicial do site do Leandro Faria e Daniela Schott" loading="lazy" width="1200" height="750">
+          </div>
+          <div class="card__base">
+            <div>
+              <h3>Leandro Faria &amp; Daniela Schott</h3>
+              <p>Site de corretores com busca, filtros, simulador de financiamento e tudo caindo no WhatsApp.</p>
+            </div>
+            <span class="card__seta" aria-hidden="true">↗</span>
+          </div>
+        </article>
+
+        <article class="card" style="--i:2" data-perch="sit" data-perch-x="0.84" data-say="o site da minha empresa">
+          <div class="card__topo">
+            <span class="card__num">03</span>
+            <ul class="tags"><li>Site</li><li>Blog</li><li>SEO</li></ul>
+          </div>
+          <div class="card__img">
+            <img src="assets/img/projetos/nextage.jpg" alt="Página inicial do site da Nextage" loading="lazy" width="1200" height="750">
+          </div>
+          <div class="card__base">
+            <div>
+              <h3>Nextage</h3>
+              <p>Site e blog da minha empresa de sites e automações, com captação direto pro WhatsApp.</p>
+            </div>
+            <span class="card__seta" aria-hidden="true">↗</span>
+          </div>
+        </article>
+
+        <article class="card" style="--i:3" data-perch="sit" data-perch-x="0.84" data-say="esse aqui é demo">
+          <div class="card__topo">
+            <span class="card__num">04</span>
+            <ul class="tags"><li>Site</li><li>Imobiliário</li><li>Modelo</li></ul>
+          </div>
+          <div class="card__img">
+            <img src="assets/img/projetos/helena.jpg" alt="Página inicial do site demonstrativo da corretora Helena Duarte" loading="lazy" width="1200" height="750">
+          </div>
+          <div class="card__base">
+            <div>
+              <h3>Helena Duarte <small>(demo)</small></h3>
+              <p>Modelo de site pra corretora: imóveis com galeria, filtros na URL e formulário que abre o WhatsApp.</p>
+            </div>
+            <span class="card__seta" aria-hidden="true">↗</span>
+          </div>
+        </article>
+
+        <article class="card card--cta" style="--i:4" data-perch="point" data-perch-x="0.16" data-say="bora fazer o seu?">
+          <div class="card__cta">
+            <p class="rotulo">Próximo projeto</p>
+            <h3>O próximo<br>pode ser o seu.</h3>
+            <p>Me conta a ideia, mesmo que seja só uma frase. A gente vê junto o que dá pra fazer.</p>
+            <a class="btn btn--grande" data-whats="Opa, Riquelme! Vi teus projetos e queria conversar sobre o meu." href="#">Bora conversar <span aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== BOAS IDEIAS ===== -->
+    <section class="ideias" id="ideias">
+      <div class="ideias__palco">
+        <p class="rotulo">Como eu trabalho</p>
+        <h2 class="ideias__titulo" aria-label="Boas ideias ficam melhores quando viram site.">
+          <span class="p">Boas</span> <span class="p">ideias</span> <span class="p">ficam</span> <span class="p">melhores</span>
+          <span class="p p--azul">quando</span> <span class="p p--azul">viram</span> <span class="p p--azul">site.</span>
+        </h2>
+
+        <div class="ideias__cena">
+          <div class="nota" aria-hidden="true">
+            <p class="nota__cab">ideia.txt</p>
+            <p class="nota__texto" data-texto="e se meus clientes conseguissem agendar sozinhos, sem me chamar no zap toda hora?"></p>
+          </div>
+
+          <div class="ideias__seta" aria-hidden="true"></div>
+
+          <div class="mock" aria-hidden="true" data-perch="point" data-perch-x="0.9" data-face="left" data-say="olha a ideia virando site">
+            <p class="mock__vazio">esperando uma ideia...</p>
+            <div class="mock__barra" data-passo="0.44"><i></i><i></i><i></i><span>studiobella.com.br</span></div>
+            <div class="mock__corpo" data-passo="0.47">
+              <div class="mock__nav" data-passo="0.5"><b>Studio Bella</b><span></span><span></span><em>Agendar</em></div>
+              <div class="mock__hero">
+                <div>
+                  <p class="mock__h" data-passo="0.56">Agende seu horário<br>em 30 segundos.</p>
+                  <p class="mock__p" data-passo="0.6">Escolha o serviço, o dia e pronto. Confirmação no WhatsApp.</p>
+                  <span class="mock__btn" data-passo="0.64">Ver horários</span>
+                </div>
+                <div class="mock__agenda" data-passo="0.7">
+                  <p>Outubro</p>
+                  <div class="mock__dias"><i></i><i></i><i class="x"></i><i></i><i></i><i></i><i class="x"></i><i></i><i class="sel"></i><i></i><i></i><i></i><i class="x"></i><i></i></div>
+                  <div class="mock__horas"><span>09:00</span><span class="sel">10:30</span><span>14:00</span></div>
+                </div>
+              </div>
+              <div class="mock__cards">
+                <span data-passo="0.76"></span><span data-passo="0.8"></span><span data-passo="0.84"></span>
+              </div>
+            </div>
+            <!-- automação rodando em cima do site -->
+            <div class="mock__auto">
+              <div class="mock__toast" data-passo="0.9">
+                <span class="mock__ico"></span>
+                <div><b>Automação</b><p>Novo agendamento: Ana · sex, 10:30</p></div>
+              </div>
+              <div class="mock__toast mock__toast--zap" data-passo="0.94">
+                <span class="mock__ico pixel-zap"></span>
+                <div><b>WhatsApp enviado</b><p>“Oi, Ana! Teu horário tá confirmado.”</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ideias__rodape">
+          <p><b>Além de sites, eu integro automações neles</b> — tipo essa do exemplo: o cliente agenda sozinho e a confirmação chega no WhatsApp sem ninguém encostar no celular. Você chega com a ideia, eu faço ela funcionar.</p>
+          <ul class="tags tags--grandes"><li>Sites</li><li>Sistemas sob medida</li><li>Automações</li><li>Integração com IA</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTATO ===== -->
+    <section class="contato" id="contato">
+      <div class="contato__texto surge">
+        <p class="rotulo">Contato</p>
+        <h2>Bora tirar tua ideia do papel?</h2>
+        <p>Preenche aí que já cai direto no meu WhatsApp. Sem formulário chato, sem esperar e-mail.</p>
+        <a class="contato__direto" data-whats href="#"><span class="pixel-zap" aria-hidden="true"></span>(14) 99763-1182</a>
+      </div>
+
+      <form class="contato__form surge" data-perch="stand" data-perch-x="0.86" data-say="é só arrastar ali embaixo" novalidate>
+        <label class="campo">
+          <span>Teu nome</span>
+          <input name="nome" type="text" autocomplete="name" placeholder="Como posso te chamar?">
+        </label>
+
+        <fieldset class="campo">
+          <legend>O que você precisa?</legend>
+          <div class="opcoes">
+            <label><input type="radio" name="tipo" value="um site"><span>Site</span></label>
+            <label><input type="radio" name="tipo" value="uma automação"><span>Automação</span></label>
+            <label><input type="radio" name="tipo" value="um sistema sob medida"><span>Sistema</span></label>
+            <label><input type="radio" name="tipo" value="ajuda pra descobrir o que preciso"><span>Ainda não sei</span></label>
+          </div>
+        </fieldset>
+
+        <label class="campo">
+          <span>Conta rapidinho a ideia <em>(opcional)</em></span>
+          <textarea name="ideia" rows="3" maxlength="600" placeholder="Ex.: queria um site com catálogo dos meus produtos"></textarea>
+        </label>
+
+        <div class="arrastar" style="--x:0px;--p:0">
+          <button type="button" class="arrastar__puxador" aria-label="Enviar pelo WhatsApp">
+            <span class="pixel-zap" aria-hidden="true"></span>
+          </button>
+          <span class="arrastar__texto">Arraste pra enviar</span>
+          <span class="arrastar__ok">Abrindo o WhatsApp...</span>
+        </div>
+        <button type="submit" class="sr-only">Enviar pelo WhatsApp</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- ===== RODAPÉ ===== -->
+  <footer class="rodape">
+    <p class="rodape__marca" data-perch="sit" data-perch-x="0.95" data-perch-dy="0.16" data-say="valeu pela visita!">RIQUELME</p>
+    <div class="rodape__linha">
+      <p>© <span id="ano"></span> Riquelme Gabriel · Sites, sistemas e automações</p>
+      <p><a data-whats href="#">WhatsApp</a> · <a href="mailto:riquel.gabriell@gmail.com">riquel.gabriell@gmail.com</a></p>
+      <p><a href="termos.html">Termos de uso</a> · <a href="privacidade.html">Política de privacidade</a> · <a href="#topo">Voltar ao topo ↑</a></p>
+    </div>
+  </footer>
+
+  <script src="assets/js/mascote.js"></script>
+  <script src="assets/js/hero-fundo.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
