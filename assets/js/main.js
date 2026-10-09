@@ -120,7 +120,7 @@ setTimeout(async () => {
   if (reduzir) cta.classList.add('on');
   else await revelarEmPixels(cta);
   window.Mascote?.entrar($('.hero__cta'));
-}, reduzir ? 200 : TEMPO_NOME + 500);
+}, reduzir ? 200 : TEMPO_NOME - 400);
 
 /* ---------- Texto gigante "Veja meu trabalho" anda com a rolagem ---------- */
 const gigante = $('.gigante');
@@ -143,9 +143,13 @@ const contador = $('.projetos__contador b');
     .sort((a, b) => parseFloat(a.dataset.passo) - parseFloat(b.dataset.passo));
   const espera = (ms) => new Promise((ok) => setTimeout(ok, reduzir ? 0 : ms));
 
-  // ordem: título acende → ideia é digitada até o fim → só então o site começa a aparecer
-  async function montar() {
+  // o título acende quando ele mesmo chega na tela
+  async function acenderTitulo() {
     for (const w of palavras) { w.classList.add('on'); await espera(80); }
+  }
+  // ideia é digitada até o fim → só então o site começa a aparecer
+  async function montar() {
+    await titulo; // se a pessoa rolou rápido, espera o título terminar
     await espera(120);
     nota.classList.add('digitando');
     for (let i = 1; i <= texto.length; i++) {
@@ -158,11 +162,16 @@ const contador = $('.projetos__contador b');
     for (const b of blocos) { b.classList.add('on'); await espera(170); }
   }
 
-  // começa assim que a seção entra um pouco na tela
-  const obs = new IntersectionObserver(([e]) => {
-    if (e.isIntersecting) { obs.disconnect(); montar(); }
-  }, { threshold: 0.15 });
-  obs.observe(ideias);
+  // cada parte só começa quando a pessoa chega nela
+  let titulo = Promise.resolve();
+  const quandoChegar = (alvo, limiar, fn) => {
+    const o = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { o.disconnect(); fn(); }
+    }, { threshold: limiar });
+    o.observe(alvo);
+  };
+  quandoChegar($('.ideias__titulo', ideias), 0.6, () => { titulo = acenderTitulo(); });
+  quandoChegar($('.ideias__cena', ideias), 0.45, montar);
 })();
 
 function aoRolar() {
@@ -200,6 +209,16 @@ const io = new IntersectionObserver((es) => es.forEach((e) => {
   if (e.isIntersecting) { e.target.classList.add('visto'); io.unobserve(e.target); }
 }), { threshold: 0.2 });
 $$('.surge').forEach((el) => io.observe(el));
+
+/* ---------- CTA do último card: anima quando aparece ---------- */
+(() => {
+  const cta = $('.card__cta');
+  if (!cta) return;
+  const o = new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) { cta.classList.add('on'); o.disconnect(); }
+  }, { threshold: 0.4 });
+  o.observe(cta);
+})();
 
 /* ---------- Contato ---------- */
 const form = $('.contato__form');

@@ -296,6 +296,24 @@ p { margin: 0; }
 }
 .card__cta { position: relative; padding: clamp(32px, 6vw, 72px); min-height: min(64vh, 620px); display: grid; align-content: center; justify-items: start; }
 .card__cta h3 { font-size: clamp(40px, 5vw, 76px); letter-spacing: -0.055em; margin-bottom: 22px; }
+/* CTA: um brilho passa devagar pelo título de tempos em tempos... */
+.card__cta h3 {
+  background: linear-gradient(105deg, var(--texto) 42%, #ffffff 47%, #b9cdf6 50%, #ffffff 53%, var(--texto) 58%);
+  background-size: 260% 100%;
+  background-position: 100% 0;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.card__cta.on h3 { animation: cta-brilho 5.5s ease-in-out .9s infinite; }
+/* ...e um sublinhado azul em pixel se desenha embaixo de "o seu." */
+.cta__seu { position: relative; display: inline-block; }
+.cta__seu::after {
+  content: ''; position: absolute; left: 0; right: .12em; bottom: -.04em; height: .085em;
+  background: var(--azul);
+  transform: scaleX(0); transform-origin: 0 50%;
+  transition: transform .7s steps(9) .35s;
+}
+.card__cta.on .cta__seu::after { transform: scaleX(1); }
+@keyframes cta-brilho { 0% { background-position: 100% 0; } 35%, 100% { background-position: 0% 0; } }
 .card__cta p:not(.rotulo) { color: var(--apagado); max-width: 30em; margin-bottom: 34px; }
 
 /* ---------- Ideias (anima sozinha quando aparece) ---------- */
@@ -526,8 +544,13 @@ p { margin: 0; }
   -webkit-background-clip: text; background-clip: text; color: transparent;
   letter-spacing: -0.02em;
 }
-.rodape__linha { display: flex; justify-content: space-between; gap: 10px 24px; flex-wrap: wrap; color: var(--apagado); font-size: 14px; }
+.rodape__linha { display: flex; justify-content: space-between; gap: 10px 24px; flex-wrap: wrap; color: var(--apagado); font-size: 14px; align-items: center; }
 .rodape__linha a:hover { color: var(--texto); }
+/* e-mail e WhatsApp juntos, e-mail em destaque */
+.rodape__contato { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 18px; }
+.rodape__contato a { color: var(--texto); }
+.rodape__contato a:first-child { font-weight: 500; border-bottom: 1px solid #444; padding-bottom: 1px; }
+.rodape__contato a + a { color: var(--apagado); }
 
 /* ---------- Mascote ---------- */
 .mascote {
@@ -597,6 +620,7 @@ p { margin: 0; }
   .projetos__lista { gap: 8vh; }
   .card { top: calc(84px + var(--i) * 10px); }
   .card__cta { min-height: 380px; }
+  .rodape__linha { flex-direction: column; align-items: flex-start; gap: 14px; }
   .ideias__palco { padding-top: 12vh; padding-bottom: 4vh; gap: 5vh; }
   .ideias__palco > .rotulo { margin-bottom: -5vh; }
   .ideias__cena { grid-template-columns: 1fr; gap: 18px; }
@@ -619,7 +643,16 @@ p { margin: 0; }
   .card__base { padding: 16px 14px 18px; gap: 14px; }
   .card__base h3 { font-size: 22px; }
   .card__seta { width: 40px; height: 40px; }
-  .mascote__balao { font-size: 11px; white-space: normal; width: max-content; max-width: 140px; }
+  .mascote__balao { font-size: 11px; white-space: normal; width: max-content; max-width: 160px; }
+}
+
+@media (max-width: 720px) {
+  .mascote__balao,
+  .balao-esq .mascote__balao { bottom: calc(100% + 12px); left: 0; right: auto; transform-origin: 0 100%; }
+  .balao-esq .mascote__balao { left: auto; right: 0; transform-origin: 100% 100%; }
+  .mascote__balao::after,
+  .balao-esq .mascote__balao::after { left: 14px; right: auto; translate: 0 3px; box-shadow: none; }
+  .balao-esq .mascote__balao::after { left: auto; right: 14px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

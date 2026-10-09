@@ -214,7 +214,10 @@
     if (!visiveis.length) return poleiro;
     const fimDaPagina = scrollY + vh >= document.documentElement.scrollHeight - 4;
     if (fimDaPagina) return visiveis[visiveis.length - 1];
-    const passaram = visiveis.filter((p) => p.getBoundingClientRect().top < vh * 0.62);
+    const passaram = visiveis.filter((p) => {
+      const limite = p.classList.contains('card') ? 0.85 : 0.62;
+      return p.getBoundingClientRect().top < vh * limite;
+    });
     return passaram.length ? passaram[passaram.length - 1] : visiveis[0];
   }
 
@@ -309,10 +312,12 @@
     entrar(perch) {
       if (ativo) return;
       ativo = true;
-      el.classList.add('visivel');
       poleiro = perch;
       const a = alvoDe(perch);
       pos.x = a.x; pos.y = -160;
+      const o = origem();
+      el.style.transform = `translate3d(${Math.round(pos.x - o.x)}px, ${Math.round(pos.y - o.y)}px, 0)`;
+      el.classList.add('visivel');
       salto = reduzir ? null : { de: { x: a.x, y: -160 }, t0: performance.now(), dur: 620, altura: 0 };
       pose = reduzir ? perch.dataset.perch || 'stand' : 'jump';
       ultimoSalto = performance.now();
