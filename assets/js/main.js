@@ -120,7 +120,7 @@ setTimeout(async () => {
   if (reduzir) cta.classList.add('on');
   else await revelarEmPixels(cta);
   window.Mascote?.entrar($('.hero__cta'));
-}, reduzir ? 200 : TEMPO_NOME - 400);
+}, reduzir ? 200 : Math.max(500, TEMPO_NOME - 850));
 
 /* ---------- Texto gigante "Veja meu trabalho" anda com a rolagem ---------- */
 const gigante = $('.gigante');
@@ -195,8 +195,8 @@ function aoRolar() {
     if (r.top < vh * 0.62) ativo = i;
     if (!prox) return;
     const d = prox.getBoundingClientRect().top - r.top;
-    const p = clamp(1 - d / r.height);
-    c.style.setProperty('--cobre', p.toFixed(3));
+    const p = clamp(1 - d / r.height).toFixed(3);
+    if (c.dataset.cobre !== p) { c.dataset.cobre = p; c.style.setProperty('--cobre', p); }
   });
   if (contador) contador.textContent = String(ativo + 1).padStart(2, '0');
 }

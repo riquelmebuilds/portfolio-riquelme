@@ -159,6 +159,7 @@
 
   // ---------- Fala ----------
   let falaAtual = '';
+  let larguraBalao = 0;
   let timerFala;
   function falar(texto, ms = 3200) {
     clearTimeout(timerFala);
@@ -166,7 +167,7 @@
     if (texto !== falaAtual || !balao.classList.contains('on')) {
       balao.textContent = texto;
       balao.classList.remove('on');
-      void balao.offsetWidth;
+      larguraBalao = balao.offsetWidth;
       balao.classList.add('on');
     }
     falaAtual = texto;
@@ -204,10 +205,11 @@
 
   // Escolhe onde pousar: só vale lugar com a borda de cima visível
   // (abaixo do menu). Entre esses, o último que já passou de 62% da tela.
+  const poleiros = [...document.querySelectorAll('[data-perch]')];
   function escolherPoleiro() {
     const vh = innerHeight;
     const topoLivre = 70 + 24 * escala;
-    const visiveis = [...document.querySelectorAll('[data-perch]')].filter((p) => {
+    const visiveis = poleiros.filter((p) => {
       const r = p.getBoundingClientRect();
       return r.width > 0 && r.top > topoLivre && r.top < vh - 30;
     });
@@ -268,11 +270,15 @@
     return { x: r.left + casa.clientLeft, y: r.top + casa.clientTop };
   }
 
+  let ultimoScroll = -1, ultimaAltura = 0, ultimaEscolha = 0, ultimoTransform = '', ultimaEsq = null;
   function quadro(agora) {
     if (ativo) {
-      const p = escolherPoleiro();
-      // evita ficar pulando sem parar numa rolagem muito rápida
-      if (p && p !== poleiro && agora - ultimoSalto > 160) pularPara(p);
+      if (scrollY !== ultimoScroll || innerHeight !== ultimaAltura || agora - ultimaEscolha > 200) {
+        ultimoScroll = scrollY; ultimaAltura = innerHeight; ultimaEscolha = agora;
+        const p = escolherPoleiro();
+        // evita ficar pulando sem parar numa rolagem muito rápida
+        if (p && p !== poleiro && agora - ultimoSalto > 160) pularPara(p);
+      }
 
       if (poleiro) {
         const a = alvoDe(poleiro);
@@ -296,10 +302,12 @@
         }
       }
       const o = origem();
-      el.style.transform = `translate3d(${Math.round(pos.x - o.x)}px, ${Math.round(pos.y - o.y)}px, 0)`;
+      const tr = `translate3d(${Math.round(pos.x - o.x)}px, ${Math.round(pos.y - o.y)}px, 0)`;
+      if (tr !== ultimoTransform) { el.style.transform = tr; ultimoTransform = tr; }
       // balão do lado que tem mais espaço
-      const largura = canvas.offsetWidth + balao.offsetWidth + 20;
-      el.classList.toggle('balao-esq', pos.x + largura > innerWidth - 8 && pos.x > innerWidth - pos.x - canvas.offsetWidth);
+      const larguraCorpo = canvas.width * escala;
+      const esq = pos.x + larguraCorpo + larguraBalao + 20 > innerWidth - 8 && pos.x > innerWidth - pos.x - larguraCorpo;
+      if (esq !== ultimaEsq) { el.classList.toggle('balao-esq', esq); ultimaEsq = esq; }
     }
     requestAnimationFrame(quadro);
   }
