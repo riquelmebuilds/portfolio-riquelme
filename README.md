@@ -37,5 +37,5 @@ Site pessoal do Riquelme (não é o da Nextage). Preto de verdade e branco, com 
 
 ## Antes de publicar
 
-- **Leandro Faria e Vemax** são demos de proposta. Confirmar com eles se pode mostrar no portfólio (ou trocar pelos projetos novos).
+- **Vemax** é demo de proposta. Confirmar com o cliente se pode mostrar no portfólio. Os cards linkam pros sites no GitHub Pages (riquelmebuilds.github.io).
 - **Helena Duarte** é fictícia — tá marcada como "(demo)".
